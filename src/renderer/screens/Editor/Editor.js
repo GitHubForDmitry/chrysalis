@@ -117,7 +117,6 @@ class Editor extends React.Component {
     isMultiSelected: false,
     isColorButtonSelected: false
   };
-  keymapDB = new KeymapDB();
 
   /**
    * Bottom menu never hide and automatically select a key at launch and have this shown in the bottom menu
@@ -203,6 +202,7 @@ class Editor extends React.Component {
 
   onKeyChange = keyCode => {
     // Keys can only change on the custom layers
+    let keymapDB = new KeymapDB();
 
     let layer = this.state.currentLayer,
       keyIndex = this.state.currentKeyIndex;
@@ -216,7 +216,7 @@ class Editor extends React.Component {
       const l = state.keymap.onlyCustom
         ? layer
         : layer - state.keymap.default.length;
-      keymap[l][keyIndex] = this.keymapDB.parse(keyCode);
+      keymap[l][keyIndex] = keymapDB.parse(keyCode);
       return {
         keymap: {
           default: state.keymap.default,
