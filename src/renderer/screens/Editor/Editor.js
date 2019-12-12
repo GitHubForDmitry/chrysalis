@@ -175,7 +175,12 @@ class Editor extends React.Component {
         await focus.command("keymap", keymap);
       }
 
-      let colormap = await focus.command("colormap");
+      let colormap;
+      if (!settings.get("actualColorMap")) {
+        settings.set("actualColorMap", colormap.colorMap);
+      } else {
+        colormap = await focus.command("colormap");
+      }
       let palette = colormap.palette.slice();
       const undeglowColors = settings.get("undeglowColors");
       this.setState(
@@ -388,14 +393,20 @@ class Editor extends React.Component {
     }
   };
 
-  selectLayer = event => {
+  selectLayer = async event => {
     if (event.target.value === undefined) return;
-    const { palette, undeglowColors } = this.state;
+
+    const { palette, undeglowColors, colorMap } = this.state;
+    let newColorMap = colorMap.slice();
     let newPalette = palette.slice();
+    newColorMap[0] = [...settings.get("actualColorMap")[event.target.value]];
     newPalette[this.undeglowCount] = undeglowColors[event.target.value];
+    let focus = new Focus();
+    await focus.command("colormap", this.state.palette, this.state.colorMap);
     this.setState({
       currentLayer: event.target.value,
-      palette: newPalette
+      palette: newPalette,
+      colorMap: newColorMap
     });
     this.bottomMenuNeverHide();
   };
