@@ -175,17 +175,22 @@ class Editor extends React.Component {
         await focus.command("keymap", keymap);
       }
 
-      const actualColorMap = settings.get("actualColorMap");
-
       let colormap = await focus.command("colormap");
-      if (actualColorMap) {
-        colormap.colorMap = [...actualColorMap];
-        await focus.command("colormap", colormap.palette, actualColorMap);
-      } else {
-        settings.set("actualColorMap", colormap.colorMap);
-      }
+      const actualColorMap = settings.get("actualColorMap");
       let palette = colormap.palette.slice();
       const undeglowColors = settings.get("undeglowColors");
+      palette[this.undeglowCount] = undeglowColors
+        ? undeglowColors[this.state.currentLayer]
+        : undeglowDefaultColors[this.state.currentLayer];
+      if (!lang) {
+        if (actualColorMap) {
+          colormap.colorMap = [...actualColorMap];
+          colormap.colorMap[0] = actualColorMap[this.state.currentLayer];
+          await focus.command("colormap", palette, actualColorMap);
+        } else {
+          settings.set("actualColorMap", colormap.colorMap);
+        }
+      }
       this.setState(
         () => {
           if (!undeglowColors) {
@@ -196,9 +201,6 @@ class Editor extends React.Component {
           }
         },
         () => {
-          palette[this.undeglowCount] = this.state.undeglowColors[
-            this.state.currentLayer
-          ];
           this.setState({
             defaultLayer: defLayer,
             keymap: keymap,
@@ -414,11 +416,26 @@ class Editor extends React.Component {
   };
 
   onApply = async () => {
+    const { colorMap, currentLayer } = this.state;
     this.setState({ saving: true });
     settings.set("undeglowColors", this.state.undeglowColors);
+    const actualColorMap = settings.get("actualColorMap");
+    let newColorMapSettings = [];
+    if (currentLayer) {
+      newColorMapSettings.push(actualColorMap[0]);
+      newColorMapSettings = [
+        ...newColorMapSettings,
+        ...colorMap.filter((_, key) => key > 0)
+      ];
+    } else {
+      newColorMapSettings = [...colorMap];
+    }
+    settings.set("actualColorMap", newColorMapSettings);
+    let newColorMap = colorMap.slice();
+    newColorMap[0] = [...newColorMap[currentLayer]];
     let focus = new Focus();
     await focus.command("keymap", this.state.keymap);
-    await focus.command("colormap", this.state.palette, this.state.colorMap);
+    await focus.command("colormap", this.state.palette, newColorMap);
     this.setState({
       modified: false,
       saving: false,
@@ -457,7 +474,7 @@ class Editor extends React.Component {
 
   UNSAFE_componentWillReceiveProps = nextProps => {
     if (this.props.inContext && !nextProps.inContext) {
-      this.scanKeyboard();
+      this.scanKeyboard("recieve");
       this.setState({ modified: false });
     }
   };
