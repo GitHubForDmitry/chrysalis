@@ -56,6 +56,13 @@ const styleDisabled = {
   color: "#797979"
 };
 
+const styleDisabledDark = {
+  pointerEvents: "none",
+  cursor: "default",
+  color: "rgba(255, 255, 255, 0.3)",
+  backgroundColor: "rgba(255, 255, 255, 0.12)"
+};
+
 /**
  * This is Reactjs functional component that create button for change color of all undeglow elements
  * @param {object} classes Property that sets up CSS classes that adding to HTML elements
@@ -72,7 +79,8 @@ function BackLightButton(props) {
     colorFocusButton,
     toChangeAllKeysColor,
     disabled,
-    indexFocusButton
+    indexFocusButton,
+    darkMode
   } = props;
 
   const minWhiteColorValue = 140;
@@ -107,7 +115,9 @@ function BackLightButton(props) {
           className={classes.button}
           style={
             (!+indexFocusButton && indexFocusButton !== 0) || disabled
-              ? styleDisabled
+              ? darkMode
+                ? styleDisabledDark
+                : styleDisabled
               : styles().button
           }
           onClick={() => {

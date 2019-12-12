@@ -77,6 +77,7 @@ function ColorPalette(props) {
     isColorButtonSelected,
     onColorButtonSelect,
     theme,
+    darkMode,
     toChangeAllKeysColor,
     onBacklightColorSelect
   } = props;
@@ -142,6 +143,7 @@ function ColorPalette(props) {
     palette,
     disabled,
     theme,
+    darkMode,
     toChangeAllKeysColor,
     setIndexFocusButton,
     setColorFocusButton,
@@ -165,6 +167,7 @@ function ColorPalette(props) {
         theme={theme}
         toChangeAllKeysColor={toChangeAllKeysColor}
         palette={palette}
+        darkMode={darkMode}
       >
         {i18n.components.underglowColorButton}
       </UnderglowButton>
@@ -173,6 +176,7 @@ function ColorPalette(props) {
         indexFocusButton={indexFocusButton}
         disabled={disabled}
         theme={theme}
+        darkMode={darkMode}
         toChangeAllKeysColor={toChangeAllKeysColor}
       >
         {i18n.components.keysColorButton}
