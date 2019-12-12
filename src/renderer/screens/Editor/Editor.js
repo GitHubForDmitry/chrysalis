@@ -399,7 +399,6 @@ class Editor extends React.Component {
     const { palette, undeglowColors, colorMap } = this.state;
     let newColorMap = colorMap.slice();
     let newPalette = palette.slice();
-    newColorMap[0] = [...settings.get("actualColorMap")[event.target.value]];
     newPalette[this.undeglowCount] = undeglowColors[event.target.value];
     let focus = new Focus();
     await focus.command("colormap", this.state.palette, this.state.colorMap);
