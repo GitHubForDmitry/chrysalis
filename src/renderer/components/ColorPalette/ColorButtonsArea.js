@@ -61,8 +61,7 @@ function ColorButtonsArea(props) {
     indexFocusButton,
     setIsFocus,
     palette,
-    disabled,
-    onBacklightColorSelect
+    disabled
   } = props;
 
   /**

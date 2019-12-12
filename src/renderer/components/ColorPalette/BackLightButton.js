@@ -19,7 +19,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
-import { darkTheme } from "../../../styles/darkTheme";
 
 BackLightButton.propTypes = {
   classes: PropTypes.object.isRequired,
