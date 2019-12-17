@@ -6,7 +6,7 @@
     "name": "Gergely Nagy",
     "email": "algernon@keyboard.io"
   },
-  "homepage": "https://github.com/keyboardio/Chrysalis",
+  "homepage": "https://github.com/Dygmalab/Bazecor",
   "scripts": {
     "preinstall": "node tools/preinstall.js",
     "postinstall": "electron-builder install-app-deps",
@@ -32,7 +32,7 @@
     }
   },
   "build": {
-    "appId": "keyboardio.chrysalis",
+    "appId": "keyboardio.bazecor",
     "productName": "Bazecor",
     "artifactName": "${productName}-${version}.${ext}",
     "copyright": "Copyright © 2018, 2019 Keyboardio Inc.; distributed under the GPLv3",
@@ -46,10 +46,10 @@
     }
   },
   "dependencies": {
-    "@chrysalis-api/colormap": "^0.0.13",
-    "@chrysalis-api/focus": "^0.0.14",
-    "@chrysalis-api/hardware": "^0.0.17",
-    "@chrysalis-api/keymap": "^0.0.24",
+    "@bazecor-api/colormap": "^0.0.1",
+    "@bazecor-api/focus": "^0.0.1",
+    "@bazecor-api/hardware": "^0.0.1",
+    "@bazecor-api/keymap": "^0.0.1",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.30",
