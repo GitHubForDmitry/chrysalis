@@ -1,6 +1,6 @@
 // -*- mode: js-jsx -*-
 /* Bazecor -- Kaleidoscope Command Center
- * Copyright (C) 2018, 2019  Keyboardio, Inc.
+ * Copyright (C) 2019  Dygmalab, Inc.
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -37,7 +37,7 @@ import Switch from "@material-ui/core/Switch";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-import Focus from "@chrysalis-api/focus";
+import Focus from "@bazecor-api/focus";
 
 import ConfirmationDialog from "../components/ConfirmationDialog";
 import SaveChangesButton from "../components/SaveChangesButton";

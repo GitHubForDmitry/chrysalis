@@ -1,6 +1,6 @@
 // -*- mode: js-jsx -*-
 /* Bazecor -- Kaleidoscope Command Center
- * Copyright (C) 2018, 2019  Keyboardio, Inc.
+ * Copyright (C) 2019  Dygmalab, Inc.
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -19,9 +19,9 @@ import React from "react";
 import { spawn } from "child_process";
 import settings from "electron-settings";
 
-import Focus from "@chrysalis-api/focus";
-import "@chrysalis-api/keymap";
-import "@chrysalis-api/colormap";
+import Focus from "@bazecor-api/focus";
+import "@bazecor-api/keymap";
+import "@bazecor-api/colormap";
 import "typeface-roboto/index.css";
 import "typeface-source-code-pro/index.css";
 import { LocationProvider, Router } from "@reach/router";
@@ -249,6 +249,7 @@ class App extends React.Component {
                   inContext={this.state.contextBar}
                   titleElement={() => document.querySelector("#page-title")}
                   appBarElement={() => document.querySelector("#appbar")}
+                  darkMode={darkMode}
                 />
                 <FirmwareUpdate
                   path="/firmware-update"

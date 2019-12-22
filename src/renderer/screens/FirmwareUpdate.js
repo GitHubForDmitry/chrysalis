@@ -1,6 +1,6 @@
 // -*- mode: js-jsx -*-
 /* Bazecor -- Kaleidoscope Command Center
- * Copyright (C) 2018, 2019  Keyboardio, Inc.
+ * Copyright (C) 2019  Dygmalab, Inc.
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -21,8 +21,8 @@ import path from "path";
 import fs from "fs";
 import { version } from "../../../package.json";
 
-import Focus from "@chrysalis-api/focus";
-import FlashRaise from "@chrysalis-api/flash/lib/chrysalis-flash-raise";
+import Focus from "@bazecor-api/focus";
+import FlashRaise from "@bazecor-api/flash/lib/bazecor-flash-raise";
 
 import BuildIcon from "@material-ui/icons/Build";
 import Button from "@material-ui/core/Button";

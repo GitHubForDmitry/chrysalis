@@ -1,6 +1,6 @@
 // -*- mode: js-jsx -*-
 /* Bazecor -- Kaleidoscope Command Center
- * Copyright (C) 2019  Keyboardio, Inc.
+ * Copyright (C) 2019  DygmaLab SE, Inc.
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -24,7 +24,7 @@ import KeyboardIcon from "@material-ui/icons/Keyboard";
 import CloseIcon from "@material-ui/icons/Close";
 import Modal from "@material-ui/core/Modal";
 
-import { KeymapDB } from "@chrysalis-api/keymap";
+import { KeymapDB } from "@bazecor-api/keymap";
 import GroupItem from "./GroupItem";
 
 const styles = theme => ({
