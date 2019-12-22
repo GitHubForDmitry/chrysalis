@@ -1,5 +1,5 @@
 // -*- mode: js-jsx -*-
-/* Chrysalis -- Kaleidoscope Command Center
+/* Bazecor -- Kaleidoscope Command Center
  * Copyright (C) 2018, 2019  Keyboardio, Inc.
  *
  * This program is free software: you can redistribute it and/or modify it under
@@ -93,7 +93,7 @@ class SaveChangesButton extends React.Component {
       async () => {
         await this.props.onClick(event);
         this.setState({
-          success: true,
+          success: this.props.isBeginUpdate ? !this.props.isBeginUpdate : true,
           inProgress: false
         });
         this.timer = setTimeout(() => {
